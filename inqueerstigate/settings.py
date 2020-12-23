@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # for custom user model
     "accounts.apps.AccountsConfig",
+    # custom apps in this project
+    "search.apps.SearchConfig",
 ]
 
 

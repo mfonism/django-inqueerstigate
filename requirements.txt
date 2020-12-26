@@ -1,4 +1,9 @@
+# ATTENTION!
+# if on Windows, use Python 3.6
+
 cloudinary
+dlib==19.8.1
 Django>=3.1
-numpy==1.19.3
+face-recognition==1.2.2
+numpy==1.19.0
 python-dotenv>=0.14.0

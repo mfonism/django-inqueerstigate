@@ -26,6 +26,9 @@ class SearchResult(AbstractShrewdModel):
     in_shot = CloudinaryField("in_shot")
     out_scum_shots = models.ManyToManyField("ScumShot", related_name="search_results")
 
+    def __str__(self):
+        return self.uuid
+
 
 class ScumShot(AbstractShrewdModel):
     owner = models.ForeignKey(
@@ -34,8 +37,14 @@ class ScumShot(AbstractShrewdModel):
     shot = CloudinaryField("scum_shot")
     encoding = NumpyArrayField()
 
+    def __str__(self):
+        return self.shot.url
+
 
 class Scum(AbstractShrewdModel):
     name = models.CharField(max_length=128)
     location = models.CharField(max_length=64)
     ext_url = models.URLField(max_length=256)
+
+    def __str__(self):
+        return self.name

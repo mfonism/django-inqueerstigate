@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 
+import cloudinary
+
+
 # Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
@@ -40,6 +43,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # for custom user model
     "accounts.apps.AccountsConfig",
+    # third party apps
+    "cloudinary",
     # custom apps in this project
     "search.apps.SearchConfig",
 ]
@@ -122,4 +127,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = ""
 STATIC_URL = "/static/"
+
+
+# Media files
+
+MEDIA_ROOT = ""
+MEDIA_URL = ""
+
+
+# Cloudinary config
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
+    secure=True,
+)

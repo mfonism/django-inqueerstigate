@@ -103,7 +103,7 @@ class ScumShot(FaceShotMixin, AbstractShrewdModel):
 
     def __str__(self):
         try:
-            return self.shot.url
+            return f"{self.owner.name} <{self.shot.url}>"
         except AttributeError:
             return super().__str__()
 

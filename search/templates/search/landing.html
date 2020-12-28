@@ -1,1 +1,6 @@
 <h1>inQueerstigate</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.in_shot }}
+    <input type="submit" value="Upload avatar">
+</form>

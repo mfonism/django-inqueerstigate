@@ -1,5 +1,9 @@
-from django.forms import Form
+from django import forms
+
+from .models import SearchResult
 
 
-class SearchForm(Form):
-    pass
+class SearchForm(forms.ModelForm):
+    class Meta:
+        model = SearchResult
+        fields = ("in_shot",)

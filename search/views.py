@@ -1,4 +1,5 @@
 import itertools
+import operator
 
 import face_recognition
 
@@ -30,6 +31,32 @@ class SearchLandingView(CreateView):
 
 
 class SearchResultDetailView(DetailView):
-    queryset = SearchResult.objects.prefetch_related("out_scum_shots").all()
+    queryset = SearchResult.objects.prefetch_related(
+        "out_scum_shots", "out_scum_shots__owner"
+    ).all()
     template_name = "search/result.html"
     pk_url_kwarg = "uuid"
+
+    def get_context_data(self, **kwargs):
+        extra_context = {"search_query": {}, "search_result": []}
+        extra_context["search_query"]["shot_url"] = self.object.in_shot.url
+        grouped_result = itertools.groupby(
+            self.object.out_scum_shots.order_by("owner").all(),
+            operator.attrgetter("owner"),
+        )
+        extra_context["search_result"] = [
+            {
+                "scum": {
+                    "name": owner.name,
+                    "location": owner.location,
+                    "external_url": owner.ext_url,
+                },
+                "shot_urls": [scum_shot.shot.url for scum_shot in scum_shots],
+            }
+            for owner, scum_shots in grouped_result
+        ]
+        extra_context["search_result"] = sorted(
+            extra_context["search_result"], key=lambda res: -len(res["shot_urls"]),
+        )
+
+        return super().get_context_data(**kwargs, **extra_context)

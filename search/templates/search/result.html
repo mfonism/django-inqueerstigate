@@ -1,35 +1,45 @@
-<h1>Inqueerstigate Result</h1>
+{% extends "site_base.html" %}
 
-<form method="post" enctype="multipart/form-data" action="{% url 'search-landing' %}">
-    {% csrf_token %}
-    {{ form.in_shot }}
-    <input type="submit" value="Search for face">
-</form>
+<!-- {% load static %} -->
 
-<h2>Input Shot</h2>
-<img src="{{ search_query.shot_url }}" height="256px" alt="input face shot">
+{% block extra_custom_css %}
+    <!-- <link rel="stylesheet" href="{% static 'search/css/result.css' %}"> -->
+{% endblock %}
 
-<hr>
+{% block body %}
+    <h1>Inqueerstigate Result</h1>
 
-{% if search_result %}
-    <p>Matches: {{ search_result | length }}</p>
-{% else %}
-    <p>No matches found.</p>
-{% endif %}
+    <form method="post" enctype="multipart/form-data" action="{% url 'search-landing' %}">
+        {% csrf_token %}
+        {{ form.in_shot }}
+        <input type="submit" value="Search for face">
+    </form>
 
-{% for result in search_result %}
+    <h2>Input Shot</h2>
+    <img src="{{ search_query.shot_url }}" alt="input face shot">
+
     <hr>
-    <p><span>Name:</span> <span>{{ result.scum.name }}</span></p>
-    <p><span>Location:</span> <span>{{ result.scum.location }}</span></p>
-    <p>
-        <span>External URL:</span>
-        <span>
-            <a href="{{ result.scum.external_url }}">{{ result.scum.external_url }}</a>
-        </span>
-    </p>
-    <p>{{ result.shot_urls | length }} shot{{ result.shot_urls | pluralize }} found for this
-        scum</p>
-    {% for shot_url in result.shot_urls %}
-        <img src="{{ shot_url }}" height="256px" alt="A picture of the kito scum {{ result.scum.name }}">
+
+    {% if search_result %}
+        <p>Matches: {{ search_result | length }}</p>
+    {% else %}
+        <p>No matches found.</p>
+    {% endif %}
+
+    {% for result in search_result %}
+        <hr>
+        <p><span>Name:</span> <span>{{ result.scum.name }}</span></p>
+        <p><span>Location:</span> <span>{{ result.scum.location }}</span></p>
+        <p>
+            <span>External URL:</span>
+            <span>
+                <a href="{{ result.scum.external_url }}">{{ result.scum.external_url }}</a>
+            </span>
+        </p>
+        <p>{{ result.shot_urls | length }} shot{{ result.shot_urls | pluralize }} found for this
+            scum</p>
+        {% for shot_url in result.shot_urls %}
+            <img src="{{ shot_url }}" alt="A picture of the kito scum {{ result.scum.name }}">
+        {% endfor %}
     {% endfor %}
-{% endfor %}
+{% endblock %}

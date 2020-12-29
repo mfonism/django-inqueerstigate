@@ -1,6 +1,16 @@
-<h1>inQueerstigate</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.in_shot }}
-    <input type="submit" value="Search for face">
-</form>
+{% extends "site_base.html" %}
+
+<!-- {% load static %} -->
+
+{% block extra_custom_css %}
+    <!-- <link rel="stylesheet" href="{% static 'search/css/landing.css' %}"> -->
+{% endblock %}
+
+{% block body %}
+    <h1>inQueerstigate</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.in_shot }}
+        <input type="submit" value="Search for face">
+    </form>
+{% endblock %}

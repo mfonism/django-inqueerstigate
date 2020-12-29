@@ -1,0 +1,36 @@
+<!-- {% load static %} -->
+
+<!doctype html>
+<html lang="en" class="dark">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>{% block title %}inQueerstigate{% endblock %}</title>
+
+        <!-- <link rel="icon" href="{% static 'img/brand.png' %}" type="image/png"> -->
+        <link rel="shortcut icon" href="{% static 'img/brand.png' %}" type="image/png">
+
+        <!-- Tailwind CSS -->
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+          rel="stylesheet">
+
+        {% block extra_vendor_css %}{% endblock %}
+
+        {% block custom_css %}
+        <!-- <link rel="stylesheet" href="{% static 'css/site_base.css' %}"> -->
+        {% endblock %}
+
+        {% block extra_custom_css %}{% endblock %}
+    </head>
+
+    <body>
+        {% block body %}{% endblock %}
+
+        {% block extra_vendor_js %}{% endblock %}
+        {% block       custom_js %}{% endblock %}
+        {% block extra_custom_js %}{% endblock %}
+    </body>
+
+</html>

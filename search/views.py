@@ -58,5 +58,6 @@ class SearchResultDetailView(DetailView):
         extra_context["search_result"] = sorted(
             extra_context["search_result"], key=lambda res: -len(res["shot_urls"]),
         )
+        extra_context["form"] = SearchForm()
 
         return super().get_context_data(**kwargs, **extra_context)

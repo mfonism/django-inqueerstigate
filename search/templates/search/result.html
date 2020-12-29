@@ -1,4 +1,11 @@
 <h1>Inqueerstigate Result</h1>
+
+<form method="post" enctype="multipart/form-data" action="{% url 'search-landing' %}">
+    {% csrf_token %}
+    {{ form.in_shot }}
+    <input type="submit" value="Search for face">
+</form>
+
 <h2>Input Shot</h2>
 <img src="{{ search_query.shot_url }}" height="256px" alt="input face shot">
 

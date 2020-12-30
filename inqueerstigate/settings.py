@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     # third party apps
     "cloudinary",
+    "widget_tweaks",
     # custom apps in this project
     "search.apps.SearchConfig",
 ]

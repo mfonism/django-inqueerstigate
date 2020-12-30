@@ -1,41 +1,22 @@
 {% extends "site_base.html" %}
 
 <!-- {% load static %} -->
-{% load widget_tweaks %}
 
 {% block extra_custom_css %}
     <link rel="stylesheet" href="{% static 'search/css/landing.css' %}">
+    <link rel="stylesheet" href="{% static 'search/css/form.css' %}">
 {% endblock %}
 
 {% block body %}
-    <div class="container h-full w-full flex justify-center items-center">
+    <div class="container mx-auto h-full w-full flex justify-center items-center">
         <div class="relative w-full max-w-screen-sm mx-2">
             <h1 class="absolute -top-12 w-full flex justify-center text-3xl brand">
                 <span>in</span>
                 <span class="q uppercase font-bold text-3xl">q</span>
                 <span>ueerstigate</span>
             </h1>
-            <form method="post" enctype="multipart/form-data" class="face-search-form flex">
-                {% csrf_token %}
-                <label for="faceShotSelector" class="block w-full relative m-0">
-                    {% render_field form.in_shot id="faceShotSelector" class="face-shot-selector w-full invisible z-0" type="file" accept="image/jpeg" %}
-                    <span id="faceShotSelectorDouble" class="face-shot-selector-double absolute top-0 left-0 h-full w-full overflow-hidden bg-gray-200"></span>
-                </label>
-                <div class="search-button-wrap">
-                  <button class="search-button flex justify-center items-center outline-none border-none">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
-                      focusable="false" width="20" height="20"
-                      style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
-                      preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                      <path
-                        d="M20 10.5a1 1 0 0 0-1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h2a1 1 0 0 0 1-.68l.54-1.64a1 1 0 0 1 .95-.68H14a1 1 0 0 0 0-2H8.44A3 3 0 0 0 5.6 6.55l-.32 1H4a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-7a1 1 0 0 0-1-1.05zm-9-1a4 4 0 1 0 4 4a4 4 0 0 0-4-4zm0 6a2 2 0 1 1 2-2a2 2 0 0 1-2 2zm11-11h-1v-1a1 1 0 0 0-2 0v1h-1a1 1 0 0 0 0 2h1v1a1 1 0 0 0 2 0v-1h1a1 1 0 0 0 0-2z"
-                        fill="white" />
-                      <rect x="0" y="0" width="24" height="24" fill="rgba(0, 0, 0, 0)" />
-                    </svg>
-                  </button>
-                </div>
-            </form>
+
+            {% include "search/form.html" %}
         </div>
     </div>
 {% endblock %}

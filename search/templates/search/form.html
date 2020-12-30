@@ -8,7 +8,7 @@
     >
     {% csrf_token %}
     <label for="faceShotSelector" class="block w-full relative m-0">
-        {% render_field form.in_shot id="faceShotSelector" class="face-shot-selector w-full invisible z-0" type="file" accept=".jpg, .jpeg" %}
+        {% render_field form.in_shot id="faceShotSelector" class="face-shot-selector w-full opacity-0 z-0" type="file" accept=".jpg, .jpeg" %}
         <span id="faceShotSelectorDouble" class="face-shot-selector-double absolute top-0 left-0 h-full w-full overflow-hidden bg-gray-200 text-black"></span>
     </label>
     <div class="search-button-wrap">

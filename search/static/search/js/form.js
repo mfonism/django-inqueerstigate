@@ -13,6 +13,7 @@ function updateInputDouble() {
 
     if (!isJPEG(curFile)) {
         inputDouble.innerHTML = "Not a valid JPG/JPEG!";
+        clearFileList(input);
         return
     }
 
@@ -21,4 +22,10 @@ function updateInputDouble() {
 
 function isJPEG(fileObj) {
     return fileObj && /\.(jpe?g)$/i.test(fileObj.name) && /image\/*/.test(fileObj.type)
+}
+
+function clearFileList(inputElement) {
+    let _mockElt = document.createElement('input');
+    _mockElt.type = 'file';
+    inputElement.files = _mockElt.files;
 }

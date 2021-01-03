@@ -1,3 +1,4 @@
-h1.brand .q {
+.brand .q {
     color: rgb(230, 0, 35);
+    font-weight: 600;
 }

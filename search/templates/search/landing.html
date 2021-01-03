@@ -10,14 +10,41 @@
 {% block body %}
     <div class="container mx-auto h-full w-full flex justify-center items-center">
         <div class="relative w-full max-w-screen-sm mx-2">
-            <h1 class="absolute -top-12 w-full flex justify-center text-3xl brand">
+            <h1 class="absolute -top-16 w-full flex justify-center text-3xl brand">
                 <span>in</span>
                 <span class="q uppercase font-bold text-3xl">q</span>
                 <span>ueerstigate</span>
             </h1>
 
             {% include "search/form.html" %}
+            <a class="absolute top-14 w-full text-center underline text-blue-400 tracking-tight" href="#about">What's this all about?</a>
         </div>
+    </div>
+    <div id="about" class="w-full bg-gray-200  text-black leading-loose pt-16 px-8">
+      <div class="w-full max-w-screen-sm mx-auto text-center">
+        <p class="mb-4">Meeting people off the internet is fraught with dangers for people who face discrimination due to their sexual orientation and gender expression.</p>
+        <p>Using the latest technologies in artificial intelligence and machine learning, <span class="brand">in<span class="q">Q</span>ueerstigate</span> can help you defend yourself from known criminal elements who lure unsuspecting members of the LGBTQ+ community into meeting with them.</p>
+      </div>
+    </div>
+    <div class="w-full bg-gray-200 text-black text-center leading-loose pt-16 px-8">
+      <div class="pb-12">
+        <svg class="mx-auto mb-4" width="128" height="128" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 5v14h-20v-14h20zm2-2h-24v18h24v-18zm-8.324 11.54c-1.433-.331-2.767-.621-2.121-1.841 1.966-3.713.521-5.699-1.555-5.699-2.117 0-3.527 2.062-1.555 5.699.665 1.227-.719 1.517-2.121 1.841-1.432.331-1.322 1.087-1.322 2.46h9.996c0-1.373.11-2.129-1.322-2.46z"/>
+        </svg>
+        <p>Upload a photo of someone you'd like to meet with.</p>
+      </div>
+      <div class="pb-12">
+        <svg class="mx-auto mb-4" width="128" height="128" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.859 6l-.489-2h21.256l-.491 2h-20.276zm1.581-4l-.439-2h17.994l-.439 2h-17.116zm20.56 16h-24l2 6h20l2-6zm-20.896-2l-.814-6h19.411l-.839 6h2.02l1.118-8h-24l1.085 8h2.019zm2.784-3.995c-.049-.555.419-1.005 1.043-1.005.625 0 1.155.449 1.185 1.004.03.555-.438 1.005-1.044 1.005-.605 0-1.136-.449-1.184-1.004zm7.575-.224l-1.824 2.68-1.813-1.312-2.826 2.851h10l-3.537-4.219z"/>
+        </svg>
+        <p>Our engine searches for known miscreants whose faces match the face you uploaded.</p>
+      </div>
+      <div class="pb-12">
+        <svg class="mx-auto mb-4" width="128" height="128" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.072 16.278c-1.002-.232-1.936-.435-1.484-1.289 1.378-2.599.366-3.989-1.088-3.989-1.482 0-2.469 1.443-1.088 3.989.465.859-.504 1.062-1.484 1.289-1.004.232-.927.761-.927 1.722h6.998c0-.961.077-1.49-.927-1.722zm-10.072-9.259v16.981h15v-16.981h-15zm13 12.981h-11v-11h11v11zm-15-1.132l-5-13.738 14.095-5.13 1.827 5h-2.128l-.9-2.455-10.38 3.778 2.486 6.832v5.713z"/>
+        </svg>
+        <p>Results are ready and presented to you in a few seconds.</p>
+      </div>
     </div>
 {% endblock %}
 

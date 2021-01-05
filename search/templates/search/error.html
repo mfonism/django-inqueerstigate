@@ -9,12 +9,14 @@
 {% endblock %}
 
 {% block body %}
-    <div id="search" class="container w-full flex p-2">
-        <h1 class="brand inline-block pr-1">
-            <a href="{% url 'search-landing' %}">in<span class="q uppercase font-bold text-3xl">q</span></a>
-        </h1>
-        <div class="w-full max-w-screen-sm mx-2">
-            {% include "search/form.html" %}
+    <div id="search" class="bg-black text-gray-200">
+        <div class="container w-full flex p-2">
+            <h1 class="brand inline-block pr-1">
+                <a href="{% url 'search-landing' %}">in<span class="q uppercase font-bold text-3xl">q</span></a>
+            </h1>
+            <div class="w-full max-w-screen-sm mx-2">
+                {% include "search/form.html" %}
+            </div>
         </div>
     </div>
     <div id="about" class="w-full bg-gray-200 text-black leading-loose py-16 lg:py-24 px-8">

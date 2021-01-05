@@ -1,0 +1,30 @@
+{% extends "site_base.html" %}
+
+<!-- {% load static %} -->
+
+{% block extra_custom_css %}
+    <link rel="stylesheet" href="{% static 'search/css/landing.css' %}">
+    <link rel="stylesheet" href="{% static 'search/css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'search/css/error.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div id="search" class="container w-full flex p-2">
+        <h1 class="brand inline-block pr-1">
+            <a href="{% url 'search-landing' %}">in<span class="q uppercase font-bold text-3xl">q</span></a>
+        </h1>
+        <div class="w-full max-w-screen-sm mx-2">
+            {% include "search/form.html" %}
+        </div>
+    </div>
+    <div id="about" class="w-full bg-gray-200 text-black leading-loose py-16 lg:py-24 px-8">
+      <div class="w-full max-w-screen-sm mx-auto text-center">
+        <p class="mb-4">{{ error_message }}</p>
+      </div>
+    </div>
+{% endblock %}
+
+
+{% block extra_custom_js %}
+    <script type="text/javascript" src="{% static 'search/js/form.js' %}"></script>
+{% endblock %}

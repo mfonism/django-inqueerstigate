@@ -11,6 +11,7 @@ from django.utils.translation import gettext_lazy as _
 
 from cloudinary.models import CloudinaryField
 
+from . import constants
 from .fields import NumpyArrayField
 
 
@@ -56,13 +57,19 @@ class FaceShotMixin:
 
             if len(face_locations) < 1:
                 raise ValidationError(
-                    {self.get_shot_field(): _("No human face found in image")}
+                    {
+                        self.get_shot_field(): ValidationError(
+                            _("No human face found in image"),
+                            code=constants.NO_FACE_FOUND_ERROR_CODE,
+                        )
+                    }
                 )
             elif len(face_locations) > 1:
                 raise ValidationError(
                     {
-                        self.get_shot_field(): _(
-                            "More than one human face found in image"
+                        self.get_shot_field(): ValidationError(
+                            _("More than one human face found in image"),
+                            code=constants.MULTIPLE_FACES_FOUND_ERROR_CODE,
                         )
                     }
                 )

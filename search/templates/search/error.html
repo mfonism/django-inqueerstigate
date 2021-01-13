@@ -3,7 +3,6 @@
 <!-- {% load static %} -->
 
 {% block extra_custom_css %}
-    <link rel="stylesheet" href="{% static 'search/css/landing.css' %}">
     <link rel="stylesheet" href="{% static 'search/css/form.css' %}">
     <link rel="stylesheet" href="{% static 'search/css/error.css' %}">
 {% endblock %}
@@ -14,7 +13,7 @@
             <h1 class="brand inline-block pr-1">
                 <a href="{% url 'search-landing' %}">in<span class="q uppercase font-bold text-3xl">q</span></a>
             </h1>
-            <div class="w-full max-w-screen-sm mx-2">
+            <div class="w-full max-w-screen-sm mx-2 result-ish">
                 {% include "search/form.html" %}
             </div>
         </div>

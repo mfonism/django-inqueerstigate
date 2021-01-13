@@ -8,3 +8,12 @@ html,
 body {
     font-family: 'Roboto Mono', monospace;
 }
+
+.brand .q {
+    color: rgb(230, 0, 35);
+    font-weight: 600;
+}
+
+.cta {
+    background-color: rgb(230, 0, 35);
+}

@@ -27,24 +27,24 @@
             <img
                 src="{{ search_query.shot_url }}"
                 alt="input face shot"
-                class="block w-1/2 sm:w-1/3 md:w-1/4"
+                class="block w-1/2 sm:w-1/3 md:w-1/4 mx-auto md:ml-0"
             >
 
-            <p class="pt-2 text-black">
+            <p class="pt-2 text-center md:text-left text-black">
             {% if search_result %}
                 Matches found: {{ search_result | length }}
             {% else %}
                 No matches found
             {% endif %}
             </p>
+            <hr class="border-gray-300 mt-3 mb-8 sm:mb-14">
 
             {% for result in search_result %}
-                <hr class="border-gray-300 mt-3 mb-8">
                 <div class="leading-relaxed">
-                    <p><span>Name:</span> <span>{{ result.scum.name }}</span></p>
-                    <p><span>Location:</span> <span>{{ result.scum.location }}</span></p>
+                    <p><!-- <span>Name:</span>  --><span>{{ result.scum.name }}</span></p>
+                    <p><!-- <span>Location:</span>  --><span>{{ result.scum.location }}</span></p>
                     <p>
-                        <span>External URL:</span>
+                        <!-- <span>External URL:</span> -->
                         <span>
                             <a
                                 href="{{ result.scum.external_url }}"
@@ -57,7 +57,7 @@
                 <p class="my-4">{{ result.shot_urls | length }} shot{{ result.shot_urls | pluralize }} found for this
                     scum</p>
 
-                <div class="w-full flex flex-wrap mb-16">
+                <div class="w-full flex flex-wrap mb-12 sm:mb-20">
                 {% for shot_url in result.shot_urls %}
                     <img
                         src="{{ shot_url }}"
@@ -66,6 +66,10 @@
                     >
                 {% endfor %}
                 </div>
+
+                {% if not forloop.last %}
+                <hr class="w-20 mx-auto border-2 border-black mb-12 sm:mb-20">
+                {% endif %}
 
             {% endfor %}
         </div>

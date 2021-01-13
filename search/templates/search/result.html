@@ -4,43 +4,63 @@
 {% load widget_tweaks %}
 
 {% block extra_custom_css %}
-    <!-- <link rel="stylesheet" href="{% static 'search/css/result.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'search/css/result.css' %}">
+    <link rel="stylesheet" href="{% static 'search/css/form.css' %}">
 {% endblock %}
 
 {% block body %}
-    <h1>Inqueerstigate Result</h1>
+    <div id="search" class="bg-black text-gray-200">
+        <div class="container w-full flex p-2">
+            <h1 class="brand inline-block pr-1">
+                <a href="{% url 'search-landing' %}">in<span class="q uppercase font-bold text-3xl">q</span></a>
+            </h1>
+            <div class="w-full max-w-screen-sm mx-2 result-ish">
+                {% include "search/form.html" %}
+            </div>
+        </div>
+    </div>
 
-    <form method="post" enctype="multipart/form-data" action="{% url 'search-landing' %}">
-        {% csrf_token %}
-        {{ form.in_shot }}
-        <input type="submit" value="Search for face">
-    </form>
+    <div class="w-full bg-gray-200 text-gray-600 leading-loose py-12 md:py-16 lg:py-24 px-8">
+        <div class="w-full max-w-screen-md mx-auto">
+            <h2 class="mb-2 font-semibold">Input Shot</h2>
+            <div class="w-full">
+                <img
+                    src="{{ search_query.shot_url }}"
+                    alt="input face shot"
+                    class="block w-full"
+                >
+            </div>
 
-    <h2>Input Shot</h2>
-    <img src="{{ search_query.shot_url }}" alt="input face shot">
+            <hr>
 
-    <hr>
+            {% if search_result %}
+                <p class="py-1 px-2 my-4 rounded-sm font-medium bg-gray-300 text-gray-900">Matches: {{ search_result | length }}</p>
+            {% else %}
+                <p class="py-1 px-2 my-4 rounded-sm font-medium bg-gray-300 text-gray-900">No matches found.</p>
+            {% endif %}
 
-    {% if search_result %}
-        <p>Matches: {{ search_result | length }}</p>
-    {% else %}
-        <p>No matches found.</p>
-    {% endif %}
+            {% for result in search_result %}
+                <div class="font-semibold my-4 leading-relaxed">
+                    <hr class="border-gray-300 mb-8">
+                    <p><span>Name:</span> <span>{{ result.scum.name }}</span></p>
+                    <p><span>Location:</span> <span>{{ result.scum.location }}</span></p>
+                    <p>
+                        <span>External URL:</span>
+                        <span>
+                            <a
+                                href="{{ result.scum.external_url }}"
+                                class="underline text-blue-400 tracking-tight"
+                            >{{ result.scum.external_url }}</a>
+                        </span>
+                    </p>
+                </div>
 
-    {% for result in search_result %}
-        <hr>
-        <p><span>Name:</span> <span>{{ result.scum.name }}</span></p>
-        <p><span>Location:</span> <span>{{ result.scum.location }}</span></p>
-        <p>
-            <span>External URL:</span>
-            <span>
-                <a href="{{ result.scum.external_url }}">{{ result.scum.external_url }}</a>
-            </span>
-        </p>
-        <p>{{ result.shot_urls | length }} shot{{ result.shot_urls | pluralize }} found for this
-            scum</p>
-        {% for shot_url in result.shot_urls %}
-            <img src="{{ shot_url }}" alt="A picture of the kito scum {{ result.scum.name }}">
-        {% endfor %}
-    {% endfor %}
+                <p class="font-semibold my-4">{{ result.shot_urls | length }} shot{{ result.shot_urls | pluralize }} found for this
+                    scum</p>
+                {% for shot_url in result.shot_urls %}
+                    <img src="{{ shot_url }}" alt="A picture of the kito scum {{ result.scum.name }}">
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

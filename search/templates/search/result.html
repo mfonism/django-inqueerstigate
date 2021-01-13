@@ -22,7 +22,7 @@
 
     <div class="w-full bg-gray-200 text-gray-600 leading-loose py-12 md:py-16 lg:py-24 px-8">
         <div class="w-full max-w-screen-md mx-auto">
-            <h2 class="mb-2 font-semibold">Input Shot</h2>
+            <!-- <h2 class="mb-2 font-semibold">Input Shot</h2> -->
             <div class="w-full">
                 <img
                     src="{{ search_query.shot_url }}"
@@ -57,9 +57,17 @@
 
                 <p class="font-semibold my-4">{{ result.shot_urls | length }} shot{{ result.shot_urls | pluralize }} found for this
                     scum</p>
+
+                <div class="w-full flex flex-wrap">
                 {% for shot_url in result.shot_urls %}
-                    <img src="{{ shot_url }}" alt="A picture of the kito scum {{ result.scum.name }}">
+                    <img
+                        src="{{ shot_url }}"
+                        alt="A picture of the kito scum {{ result.scum.name }}"
+                        class="w-full"
+                    >
                 {% endfor %}
+                </div>
+
             {% endfor %}
         </div>
     </div>

@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="w-full bg-gray-200 text-gray-900 leading-loose py-12 md:py-16 lg:py-24 px-8">
+    <div class="w-full leading-loose py-12 md:py-16 lg:py-24 px-8">
         <div class="w-full max-w-screen-md mx-auto">
 
             <!-- <h2 class="mb-2 font-semibold">Input Shot</h2> -->
@@ -30,7 +30,7 @@
                 class="block w-1/2 sm:w-1/3 md:w-1/4 mx-auto md:ml-0"
             >
 
-            <p class="pt-2 text-center md:text-left text-black">
+            <p class="pt-2 text-center md:text-left">
             {% if search_result %}
                 Matches found: {{ search_result | length }}
             {% else %}
@@ -48,7 +48,7 @@
                         <span>
                             <a
                                 href="{{ result.scum.external_url }}"
-                                class="underline text-blue-400 tracking-tight"
+                                class="underline text-blue-700 tracking-tight"
                             >{{ result.scum.external_url }}</a>
                         </span>
                     </p>

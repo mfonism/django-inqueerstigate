@@ -6,8 +6,10 @@ from .models import SearchResult, Scum, ScumShot
 
 @admin.register(SearchResult)
 class SearchResultAdmin(admin.ModelAdmin):
+    list_display = ("uuid", "get_absolute_url", "get_match_count")
     fields = (
         "uuid",
+        "get_absolute_url",
         "get_in_shot_image",
         "get_in_shot_url",
         "in_shot_encoding",
@@ -15,11 +17,32 @@ class SearchResultAdmin(admin.ModelAdmin):
     )
     readonly_fields = (
         "uuid",
+        "get_absolute_url",
         "get_in_shot_image",
         "get_in_shot_url",
         "in_shot_encoding",
         "out_scum_shots",
     )
+
+    def changelist_view(self, request, *args, **kwargs):
+        self.request = request
+        return super().changelist_view(request, *args, **kwargs)
+
+    def get_absolute_url(self, obj):
+        return mark_safe(
+            '<a href="{0}">{0}</a>'.format(
+                f"{'https://' if self.request.is_secure() else 'http://'}"
+                f"{self.request.get_host()}"
+                f"{obj.get_absolute_url()}"
+            )
+        )
+
+    get_absolute_url.short_description = "absolute url"
+
+    def get_match_count(self, obj):
+        return len(set(obj.out_scum_shots.values_list("owner", flat=True)))
+
+    get_match_count.short_description = "matches"
 
     def get_in_shot_url(self, obj):
         return mark_safe('<a href="{0}">{0}</a>'.format(obj.in_shot.url))
@@ -27,7 +50,6 @@ class SearchResultAdmin(admin.ModelAdmin):
     get_in_shot_url.short_description = "inshot url"
 
     def get_in_shot_image(self, obj):
-        print(obj.in_shot.image)
         return mark_safe(obj.in_shot.image(height=256))
 
     get_in_shot_image.short_description = "inshot image"

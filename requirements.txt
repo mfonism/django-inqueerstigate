@@ -2,9 +2,11 @@
 # if on Windows, use Python 3.6
 
 cloudinary
+dj-database-url
 Django>=3.1
-dlib==19.8.1
 django-widget-tweaks
+dlib==19.8.1
 face-recognition==1.2.2
+gunicorn
 numpy==1.19.0
 python-dotenv>=0.14.0

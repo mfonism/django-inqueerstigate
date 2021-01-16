@@ -40,7 +40,3 @@ RUN cd ~ && \
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements--docker.txt
-
-
-RUN adduser -D mfonism
-USER mfonism

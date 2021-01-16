@@ -62,14 +62,6 @@ RUN pip install -r requirements.txt
 COPY . .
 
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
-
-
 # Add and run as non-root user
 RUN adduser -D mfonism
 USER mfonism
-
-
-# Run gunicorn
-CMD gunicorn inqueerstigate.wsgi:application --bind 0.0.0.0:$PORT

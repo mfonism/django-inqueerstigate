@@ -1,0 +1,13 @@
+# Why?
+# Because a different version of dlib is needed for
+# the corresponding Dockerfile to build successfully
+
+cloudinary
+dj-database-url
+Django>=3.1
+django-widget-tweaks
+dlib==19.9.0
+face-recognition==1.2.2
+gunicorn
+numpy==1.19.0
+python-dotenv>=0.14.0

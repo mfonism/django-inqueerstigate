@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 
-# Install libraries needed for compiling  DLIB
+# Install libraries needed for compiling DLIB
 RUN apt-get -y update
 RUN apt-get install -y --fix-missing \
     build-essential \
@@ -38,6 +38,27 @@ RUN cd ~ && \
     git clone -b 'v19.9' --single-branch https://github.com/davisking/dlib.git dlib/ && \
     cd  dlib/ && \
     python3 setup.py install --yes USE_AVX_INSTRUCTIONS
+
+
+# Install libraries needed for compiling boost
+RUN apt-get -y update
+RUN apt-get install -y --fix-missing \
+    git \
+    g++ \
+    make \
+    wget \
+    && apt-get clean && rm -rf /tmp/* /var/tmp/*
+
+
+# Install boost
+RUN cd /home && wget http://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.gz \
+    && tar xfz boost_1_60_0.tar.gz \
+    && rm boost_1_60_0.tar.gz \
+    && cd boost_1_60_0 \
+    && ./bootstrap.sh --prefix=/usr/local --with-libraries=python \
+    && ./b2 install \
+    && cd /home \
+    && rm -rf boost_1_60_0
 
 
 # Set work directory

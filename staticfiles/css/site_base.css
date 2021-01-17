@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;1,700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.brand .q {
+    color: rgb(230, 0, 35);
+    font-weight: 600;
+}
+
+.cta {
+    background-color: rgb(230, 0, 35);
+}

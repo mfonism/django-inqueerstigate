@@ -10,3 +10,4 @@ face-recognition==1.2.2
 gunicorn
 numpy==1.19.0
 python-dotenv>=0.14.0
+whitenoise

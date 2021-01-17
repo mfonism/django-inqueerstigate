@@ -6,6 +6,4 @@ run:
 release:
   image: web
   command:
-    - python manage.py migrate
-    - mkdir -p $STATIC_ROOT
-    - python manage.py collectstatic --noinput
+    - bash release-tasks.sh

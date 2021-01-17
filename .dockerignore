@@ -50,4 +50,4 @@ env.bak/
 venv.bak/
 
 # Static root
-static_root/
+staticfiles/

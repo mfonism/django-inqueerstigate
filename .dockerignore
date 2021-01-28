@@ -48,6 +48,3 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
-# Static root
-staticfiles/

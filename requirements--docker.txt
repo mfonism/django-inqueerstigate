@@ -12,4 +12,4 @@ gunicorn
 numpy==1.19.0
 psycopg2-binary
 python-dotenv>=0.14.0
-whitenoise
+whitenoise[brotli]

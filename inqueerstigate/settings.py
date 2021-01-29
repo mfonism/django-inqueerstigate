@@ -46,6 +46,9 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split()
 # Application definition
 
 INSTALLED_APPS = [
+    # for using whitenoise staticfiles handling in development
+    # must come at the top of the file
+    "whitenoise.runserver_nostatic",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

@@ -1,0 +1,36 @@
+<p class="pt-2 text-center md:text-left">Matches found: {{ matches | length }}</p>
+
+<hr class="border-gray-300 mt-3 mb-8 sm:mb-14">
+
+{% for match in matches %}
+    <div class="leading-relaxed">
+        <p><span>{{ match.scum.name }}</span></p>
+        <p><span>{{ match.scum.location }}</span></p>
+        <p>
+            <span>
+                <a
+                    href="{{ match.scum.external_url }}"
+                    class="underline text-blue-700 tracking-tight"
+                >{{ match.scum.external_url }}</a>
+            </span>
+        </p>
+    </div>
+
+    <p class="my-4">{{ match.shot_urls | length }} shot{{ match.shot_urls | pluralize }} found for this
+        scum</p>
+
+    <div class="w-full flex flex-wrap mb-12 sm:mb-20">
+    {% for shot_url in match.shot_urls %}
+        <img
+            src="{{ shot_url }}"
+            alt="A picture of the kito scum {{ match.scum.name }}"
+            class="w-1/2 sm:w-1/3 md:w-1/4"
+        >
+    {% endfor %}
+    </div>
+
+    {% if not forloop.last %}
+    <hr class="w-20 mx-auto border-2 border-black mb-12 sm:mb-20">
+    {% endif %}
+
+{% endfor %}

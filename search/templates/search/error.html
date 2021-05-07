@@ -19,9 +19,26 @@
         </div>
     </div>
     <div id="about" class="w-full leading-loose py-16 lg:py-24 px-8">
-      <div class="w-full max-w-screen-sm mx-auto text-center">
-        <p class="mb-4">{{ error_message }}</p>
-      </div>
+        <div class="w-full max-w-screen-sm mx-auto">
+            <div class="bg-red-500 text-white font-bold rounded px-4 py-2 mb-4 shadow-md" role="alert">
+                <p>{{ error_message }}</p>
+            </div>
+            <div class="search-tips bg-indigo-100 border-t-4 border-indigo-500 rounded-b text-indigo-900 px-4 py-3 mb-4 shadow-md" role="alert">
+                <div class="flex">
+                    <div class="py-1"><svg class="fill-current h-6 w-6 text-indigo-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                    <div>
+                        <p class="font-bold">inQueerstigation Tips</p>
+                        <p>For better results please search with an image that meets the following criteria:</p>
+                        <ul class="list-disc">
+                            <li>Is of high pixel quality</li>
+                            <li>Contains only one human face</li>
+                            <li>The human face is looking directly into the camera</li>
+                            <li>The human face has neither sunshade nor mask on it</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 

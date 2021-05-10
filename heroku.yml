@@ -2,7 +2,7 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: gunicorn inqueerstigate.wsgi:application --workers 2 --bind 0.0.0.0:$PORT
+  web: gunicorn inqueerstigate.wsgi:application --bind 0.0.0.0:$PORT
 release:
   image: web
   command:

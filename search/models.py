@@ -11,7 +11,7 @@ from django.utils.translation import gettext_lazy as _
 
 from cloudinary.models import CloudinaryField
 
-from . import constants
+from . import constants, utils
 from .fields import NumpyArrayField
 
 
@@ -50,7 +50,7 @@ class FaceShotMixin:
 
     def clean(self, *args, **kwargs):
         if isinstance(getattr(self, self.get_shot_field()), UploadedFile):
-            image = face_recognition.load_image_file(
+            image = utils.load_image_file(
                 getattr(self, self.get_shot_field())
             )
             face_locations = face_recognition.face_locations(image)

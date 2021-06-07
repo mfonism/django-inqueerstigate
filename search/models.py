@@ -64,7 +64,7 @@ class FaceShotMixin:
                         )
                     }
                 )
-            elif len(face_locations) > 1:
+            if len(face_locations) > 1:
                 raise ValidationError(
                     {
                         self.get_shot_field(): ValidationError(
